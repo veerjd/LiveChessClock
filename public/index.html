@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>socket.io sample</title>
+</head>
+
+<body>
+  <h1>socket.io</h1>
+  <button onclick="joinRoom()">join room</button>
+  <script>
+    async function joinRoom() {
+      const response = await fetch('/joinroom', { method: 'POST' })
+      const room = (await response.json(response)).room
+      console.log(room)
+      window.location.href = `/${room}`;
+    }
+  </script>
+</body>
+
+</html>

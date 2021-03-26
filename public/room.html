@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>room</title>
+</head>
+
+<body>
+  <h1></h1>
+  <button onclick="emit()">emit</button>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let room = window.location.pathname.split('/')[1]
+    document.getElementsByTagName('h1')[0].innerText = room
+
+    const socket = io({
+      query: {
+        room: room
+      }
+    });
+
+    socket.on('message', (msg, room) => {
+      console.log(msg);
+      room = `${room}\n${msg}`
+    });
+
+    function emit() {
+      socket.emit('message', {
+        message: 'message',
+        room: room,
+      });
+    }
+  </script>
+</body>
+
+</html>
