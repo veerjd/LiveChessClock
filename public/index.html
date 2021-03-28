@@ -8,16 +8,11 @@
 </head>
 
 <body>
-  <h1>socket.io</h1>
-  <button onclick="joinRoom()">join room</button>
-  <script>
-    async function joinRoom() {
-      const response = await fetch('/joinroom', { method: 'POST' })
-      const room = (await response.json(response)).room
-      console.log(room)
-      window.location.href = `/${room}`;
-    }
-  </script>
+  <h1>LiveChessClock</h1>
+  <input type="text" id="name" placeholder="Your name">
+  <input type="text" id="time" placeholder="Base time">
+  <button onclick="joinRoom()">New room</button>
+  <script src="./index.js"></script>
 </body>
 
 </html>

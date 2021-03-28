@@ -5,34 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>room</title>
+  <link rel="stylesheet" type="text/css" href="room.css" media="screen" />
 </head>
 
-<body>
+<body onload="initialize()">
   <h1></h1>
-  <button onclick="emit()">emit</button>
+  <div class="player">
+    <div class="player">
+      <h2>First player</h2>
+      <h2 id="time1">1m00s</h2>
+      <button id="p1" onclick="player1next()">emit</button>
+    </div>
+    <div class="player">
+      <h2>Second player</h2>
+      <h2 id="time2">1m00s</h2>
+      <button id="p2" onclick="player2next()">emit</button>
+    </div>
+    <div class="player">
+      <button type="reset" onclick="initialize()">Reset</button>
+      <button type="button" onclick="start()">Start</button>
+    </div>
+    <div></div>
+  </div>
+
   <script src="/socket.io/socket.io.js"></script>
-  <script>
-    let room = window.location.pathname.split('/')[1]
-    document.getElementsByTagName('h1')[0].innerText = room
-
-    const socket = io({
-      query: {
-        room: room
-      }
-    });
-
-    socket.on('message', (msg, room) => {
-      console.log(msg);
-      room = `${room}\n${msg}`
-    });
-
-    function emit() {
-      socket.emit('message', {
-        message: 'message',
-        room: room,
-      });
-    }
-  </script>
+  <script src="/room.js"></script>
+  <script src="/libs/textFit.min.js"></script>
 </body>
 
 </html>
