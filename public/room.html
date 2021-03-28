@@ -14,12 +14,12 @@
     <div class="player">
       <h2>First player</h2>
       <h2 id="time1">1m00s</h2>
-      <button id="p1" onclick="player1next()">emit</button>
+      <button id="p1" onclick="flip(this.id)">emit</button>
     </div>
     <div class="player">
       <h2>Second player</h2>
       <h2 id="time2">1m00s</h2>
-      <button id="p2" onclick="player2next()">emit</button>
+      <button id="p2" onclick="flip(this.id)">emit</button>
     </div>
     <div class="player">
       <button type="reset" onclick="initialize()">Reset</button>
